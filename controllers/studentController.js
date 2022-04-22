@@ -1,6 +1,5 @@
 const Student = require("../models/student");
 const Class = require("../models/class");
-const bcrypt = require("bcryptjs");
 const helper = require("../config/helper");
 
 exports.addStudent = async (req, res, next) => {
