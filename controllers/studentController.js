@@ -31,7 +31,7 @@ exports.addStudent = async (req, res, next) => {
 
 exports.getAllStudents = async (req, res, next) => {
     try {
-        const students = await Student.find({});
+        const students = await Student.find({}).populate("class");
         res.status(200).json({
             status: "success",
             message: "students retrieved successfully",
@@ -47,7 +47,7 @@ exports.getStudent = async (req, res, next) => {
     try {
         const { id } = req.params;
         if (!id) return next(new Error("Id is required"));
-        const student = await Student.findById(id);
+        const student = await Student.findById(id).populate("class");
         if (!student) return next(new Error("Student not found", 404));
         res.status(200).json({
             status: "success",
